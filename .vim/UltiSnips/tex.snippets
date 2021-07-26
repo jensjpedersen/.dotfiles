@@ -73,63 +73,6 @@ snippet box "Begin box"
 \boxed{$1} $0
 endsnippet
 
-# ========================= Math =========================
-snippet eqr "math ref" i
-\eqref{$1} $0
-endsnippet
-
-snippet sn "sietific notation" i
-\num{$1} $0
-endsnippet
-
-# Math general
-snippet // "Fraction" iA
-\frac{$1}{$2}$0
-endsnippet
-
-snippet ** "Multiplication" iA
- \cdot $0
-endsnippet
-
-snippet ro "Square root" i
-\sqrt{$1} $0
-endsnippet
-
-snippet ^ "Super script" i 
-^{$1}$0
-endsnippet
-
-snippet _ "Sub script" i 
-_{$1}$0 
-endsnippet
-
-snippet vec "Vector" i
-\vec{$1}$0
-endsnippet
-
-snippet bar "Bar" i
-\bar{$1}$0
-endsnippet
-
-snippet sum "Sum" i
-\sum_{$1}^{$2}$0
-endsnippet
-
-snippet int "Integral" i
-\int_{$1}^{$2}$0
-endsnippet
-
-snippet im "Inline math" i
-\$$1\$$0
-endsnippet
-
-snippet br "Big round bracets" i 
-\left($1 \right)$0
-endsnippet
-
-snippet bs "Big square bracets" i
-\left[$1 \right]$0
-endsnippet
 
 # ========================= Environments =========================
 snippet beg "Begin environment"
@@ -161,10 +104,13 @@ snippet == "align sign" iA
 endsnippet 
 
 snippet ma "Begin matrix" 
-\begin{pmatrix}
+\begin{bmatrix}
 	$1
-\end{pmatrix}
-$0
+\end{bmatrix}
+endsnippet
+
+snippet  "&"
+& $0 
 endsnippet
 
 snippet enum "Begin enumerate" b
@@ -228,7 +174,7 @@ endsnippet
 #$0
 #endsnippet
 
-snippet eqbox "Begin equation box"
+snippet eqb "Begin equation box"
 \begin{equation*}
 	\boxed{$1}
 \end{equation*}
@@ -245,6 +191,29 @@ snippet article "Article template"
 \usepackage{siunitx} % converts expression to SI units/notation , \num{10e-10}
 \usepackage[hidelinks]{hyperref}
 
+% Code higligthing
+\usepackage{listings}
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=4
+}
+\lstset{style=mystyle}
 \setlength{\parindent}{0mm}
 \setlength{\parskip}{1.5mm}
 
@@ -281,10 +250,74 @@ $0
 endsnippet
 
 
-#========================= Symbols =========================     
-snippet ti "tilde" i
+# ========================= Math =========================
+
+# ------------------------- General -------------------------
+snippet eqr "math ref" i
+\eqref{$1} $0
+endsnippet
+
+snippet sn "sietific notation" i
+\num{$1} $0
+endsnippet
+
+snippet ^ "Super script" i 
+^{$1}$0
+endsnippet
+
+snippet _ "Sub script" i 
+_{$1}$0 
+endsnippet
+
+snippet vec "Vector" i
+\vec{$1}$0
+endsnippet
+
+snippet bar "Bar" i
+\bar{$1}$0
+endsnippet
+
+snippet hat "Hat" i
+\hat{$1} $0
+endsnippet
+
+snippet til "Tilde" i
 \tilde{$1}$0
 endsnippet
+# ------------------------- Operators -------------------------
+
+snippet // "Fraction" iA
+\frac{$1}{$2}$0
+endsnippet
+
+snippet ** "Multiplication" iA
+ \cdot $0
+endsnippet
+
+snippet ro "Square root" i
+\sqrt{$1} $0
+endsnippet
+
+snippet sum "Sum" i
+\sum_{$1}^{$2}$0
+endsnippet
+
+snippet int "Integral" i
+\int_{$1}^{$2}$0
+endsnippet
+
+snippet im "Inline math" i
+\$$1\$$0
+endsnippet
+
+snippet br "Big round bracets" i 
+\left($1 \right)$0
+endsnippet
+
+snippet bs "Big square bracets" i
+\left[$1 \right]$0
+endsnippet
+#========================= Symbols =========================     
 #------------------------- Math -------------------------
 snippet deg "degree" i
 ^\circ $0
@@ -310,12 +343,16 @@ snippet dt "time derivative" i
 \frac{d$1}{dt}$0
 endsnippet
 
-snippet dtp "time derivative" i
-\frac{\partial $1}{\partial t}$0
+snippet dpt "parital time derivative" i
+\frac{\partial $1}{\partial t} $0
 endsnippet
 
-snippet pd "partial derivative" i
-\partial $0
+snippet dp "partial derivative" i
+\frac{\partial $1}{\partial $2} $0
+endsnippet
+
+snippet dd "derivative" i
+\frac{d $1}{d $2} $0
 endsnippet
 
 snippet in "infinity" i
@@ -324,6 +361,10 @@ endsnippet
 
 snippet na "nabla" i
 \nabla
+endsnippet
+
+snippet pa "partial" i
+\partial $0
 endsnippet
 #------------------------- Greek -------------------------
 snippet al "alpha" i

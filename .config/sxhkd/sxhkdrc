@@ -26,18 +26,24 @@ super+shift+{m,period}
 super+space;{a}
     {arandr}
 
-super+space;{b}
-    alacritty --working-directory=$HOME -e {cointop}
+super+space;{b,n}
+    alacritty --working-directory=$HOME -e {cointop,nethogs}
 
 super+space;{d}
     alacritty --working-directory=/ -e {ncdu}
-# ========================= Scripts =========================
-super+space;{c,m,w,h,t}
-    alacritty --working-directory=$HOME -e sh ${HOME}/Scripts/Fzf/{config_fzf.sh,master_fzf.sh,wiki_fzf.sh,history_fzf.sh,tmux_fzf.sh}
 
-#shift+space;{t,T,b}
-#    alacritty --working-directory=$HOME -e {htop,bpytop,cointop}
+# ========================= Scripts =========================
+# ------------------------- Fzf scripts -------------------------
+super+space;{c,m,w,h,t,s}
+    alacritty --working-directory=$HOME -e sh ${HOME}/Scripts/Fzf/{config_fzf.sh,master_fzf.sh,wiki_fzf.sh,history_fzf.sh,tmux_fzf.sh,scripts_fzf.sh}
+
+# ------------------------- set wallpaper -------------------------
+#super+space;{s}
+#    alacritty --working-directory=$HOME -e sh ${HOME}/Scripts/set_wallpaper.sh
+
 
 # ========================= i3-msg =========================
 super+r
     i3-msg move workspace to output right ; i3-msg move workspace to output up
+
+

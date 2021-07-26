@@ -12,6 +12,7 @@ nnoremap <Leader>vp :w<CR>:VimuxPromptCommand<CR>
 nnoremap <Leader>vl :w<CR>:VimuxRunLastCommand<CR>
 nnoremap <Leader>vi :VimuxInspectRunner<CR>
 nnoremap <Leader>vk :VimuxInterruptRunner<CR>
+nnoremap <leader>vj :w<CR>:VimuxRunCommand("python " . bufname("%"))<CR>
 nnoremap <Leader>vz :VimuxZoomRunner<CR>
 nnoremap <Leader>vc :VimuxClearTerminalScreen<CR>
 

@@ -8,3 +8,11 @@ snippet # " comment " -b
 # ==================================================
 # $0
 endsnippet
+
+snippet sh "test shape"
+print("$1", np.shape($1)) $0
+endsnippet
+
+snippet pr "print variable"
+print("$1:", $1) $0
+endsnippet

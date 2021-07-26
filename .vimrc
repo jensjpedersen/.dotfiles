@@ -7,40 +7,40 @@
 "map pacman ctags - required for tagslist
 "aur yc 
 " auto install vim-plug
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
-
+"if empty(glob('~/.vim/autoload/plug.vim'))
+"  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+"  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+"endif
+" error: line 7 - missing endif
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox' 
-Plug 'itchyny/lightline.vim'	 " Lightline
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
+"Plug 'itchyny/lightline.vim'	 " Lightline
+""Plug 'vim-airline/vim-airline'
+""Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }	" super search
 Plug 'junegunn/fzf.vim'					" super search
-Plug 'mbbill/undotree'
-"Plug 'vifm/vifm.vim'
+"Plug 'mbbill/undotree'
+""Plug 'vifm/vifm.vim'
 Plug 'lervag/vimtex'		 " Latex
 Plug 'vimwiki/vimwiki'		 " vimwiki
-Plug 'vim-pandoc/vim-pandoc-syntax' " pandoc syntax
-Plug 'ervandew/supertab'    " supertab (make YCM compatible with UltiSnips)
-Plug 'preservim/tagbar' 
-"Plug 'francoiscabrol/ranger.vim'
-" Track the engine.
+"Plug 'vim-pandoc/vim-pandoc-syntax' " pandoc syntax
+"Plug 'ervandew/supertab'    " supertab (make YCM compatible with UltiSnips)
+"Plug 'preservim/tagbar' 
+""Plug 'francoiscabrol/ranger.vim'
+"" Track the engine.
 Plug 'SirVer/ultisnips'
-Plug 'mattn/emmet-vim' " html
+"Plug 'mattn/emmet-vim' " html
 Plug 'tpope/vim-fugitive' " git plugin
 Plug 'airblade/vim-gitgutter' 
 Plug 'christoomey/vim-tmux-navigator' "Navigation between vim and tmux
 Plug 'benmills/vimux' "vim tmux compatibility
-Plug 'justinmk/vim-sneak' "naviagation
-Plug 'wellle/targets.vim' " better text objects
+"Plug 'justinmk/vim-sneak' "naviagation
+"Plug 'wellle/targets.vim' " better text objects
 Plug 'mhinz/vim-startify' "start page
-Plug 'preservim/nerdtree' 
-Plug 'dbeniamine/cheat.sh-vim' "cheat sheet"
-Plug 'blindFS/vim-taskwarrior' " task manegment
+"Plug 'preservim/nerdtree' 
+"Plug 'dbeniamine/cheat.sh-vim' "cheat sheet"
+"Plug 'blindFS/vim-taskwarrior' " task manegment
 call plug#end()
 
 set nocompatible
@@ -67,16 +67,11 @@ set relativenumber
 set scrolloff=8
 set autochdir
 
-set timeoutlen=1000 ttimeoutlen=0 " Fix delay on escape  
-
-let mapleader = " "
-let maplocalleader = "," 
 
 " backup
 set noswapfile
 set nobackup
 
-" til here
 
 set undodir=~/.vim/undodir     " folder for undoo tree
 set undofile                   " folder for undoo tree
@@ -89,7 +84,15 @@ colorscheme gruvbox
 set laststatus=2	   " lightline
 
 
+" moved line due to error line 71, undo after test
+set timeoutlen=1000 ttimeoutlen=0 " Fix delay on escape  
+
+let mapleader = " "
+let maplocalleader = "," 
 "" syntax higligthing for ocatave and matlab
+
+
+
 au BufRead,BufNewFile *.m set filetype=octave
 
 " Use keywords from Octave syntax language file for autocomplete
@@ -156,7 +159,7 @@ let g:ycm_filetype_blacklist = {
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+"let g:SuperTabDefaultCompletionType = '<C-n>'
 
 " better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -237,7 +240,7 @@ nnoremap <F1> :set nospell<CR>
 nnoremap <F2> :set spell spelllang=en,nb<CR>
 
 " source .vimrc
-nnoremap <F3> :source $MYVIMRC<CR>
+nnoremap <F4> :source $MYVIMRC<CR>
 
 " Emmet key
 "let g:user_emmet_leader_key='<C-F>'
@@ -350,6 +353,4 @@ hi VimwikiPre ctermfg=3
 
 "hi markdownH1 ctermfg=5
 "hi markdownH2 guifg=#317849 gui=bold
-"
-
 

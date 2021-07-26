@@ -229,6 +229,15 @@ alias trash='/home/jensjp/.local/share/Trash/files'
 alias mlab="matlab -nosplash -nodesktop"
 alias t="task"
 
+# ========================= Functions =========================
+#ta() {
+#if Notes attahched:
+#taskopen
+#
+#if fales:
+#    task $1 annotate Notes
+#    taskopen $1
+#}
 # ======================== FZF =========================
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -258,6 +267,4 @@ bindkey -M menuselect 'j' vi-down-line-or-history
 bindkey -M menuselect 'k' vi-up-line-or-history
 bindkey -M menuselect 'l' vi-forward-char
 bindkey -v '^?' backward-delete-char
-
-
 

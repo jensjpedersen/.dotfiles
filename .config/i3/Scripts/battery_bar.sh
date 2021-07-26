@@ -25,3 +25,4 @@ else
         echo  ${bat}%
     fi
 fi
+

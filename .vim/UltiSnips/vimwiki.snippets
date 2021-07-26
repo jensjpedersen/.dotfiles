@@ -60,53 +60,6 @@ snippet ref "cross referance"
 \ref{$1} $0
 endsnippet
 
-snippet eqref "math ref"
-\eqref{$1} $0
-endsnippet
-
-# Math general
-snippet // "Fraction" iA
-\frac{$1}{$2}$0
-endsnippet
-
-snippet ** "Multiplication" i
-\cdot $0
-endsnippet
-
-snippet ro "Square root" i
-\sqrt{$1} $0
-endsnippet
-
-snippet ^ "Super script" i 
-^{$1}$0
-endsnippet
-
-snippet _ "Sub script" i 
-_{$1}$0 
-endsnippet
-
-snippet sum "Sum" i
-\sum_{$1}^{$2}$0
-endsnippet
-
-snippet im "Inline math" i
-$$1$$0
-endsnippet
-
-snippet br "Big round bracets"  
-\left($1 \right) $0
-endsnippet
-
-snippet bs "Big square bracets"  
-\left[$1 \right] $0
-endsnippet
-
-# Environments
-snippet beg "Begin environment"
-\begin{$1}
-	$0
-\end{$1}
-endsnippet
 
 snippet eq "Begin equation"
 \begin{equation*}
@@ -114,13 +67,19 @@ snippet eq "Begin equation"
 \end{equation*}
 endsnippet 
 
-snippet align "begin align"
+snippet eqn "Begin equation"
+\begin{equation}
+	$0
+\end{equation}
+endsnippet 
+
+snippet ali "begin align" 
 \begin{align*}
 	$0
 \end{align*}
 endsnippet
 
-snippet == "align sign" i
+snippet == "align sign" iA
 &= $0
 endsnippet 
 
@@ -128,17 +87,20 @@ snippet ma "Begin matrix"
 \begin{pmatrix}
 	$1
 \end{pmatrix}
-$0
 endsnippet
 
-snippet enum "Begin enumerate" 
+snippet  "&"
+& $0 
+endsnippet
+
+snippet enum "Begin enumerate" b
 \begin{enumerate}
 	$1
 \end{enumerate}
 $0
 endsnippet
 
-snippet item "Begin itemize"
+snippet item "Begin itemize" b
 \begin{itemize}
 	$1
 \end{itemize}
@@ -147,6 +109,31 @@ endsnippet
 
 snippet ii "Item" bA
 \item $0
+endsnippet
+
+snippet tab "Begin tabular"
+\begin{table}
+	\centering
+	\begin{tabular}{$1}
+		\hline
+		$2 
+	\end{tabular} 
+\end{table}
+$0
+endsnippet
+
+snippet tt "row" bA
+$1 \\\\
+\hline
+$0
+endsnippet
+
+snippet cap "caption"
+\caption{$1} $0 
+endsnippet
+
+snippet lab "label"
+\label{$1} $0
 endsnippet
 
 snippet py "python block"
@@ -158,6 +145,13 @@ endsnippet
 
 snippet ba "bash block"
 \`\`\`bash
+$1
+\`\`\`
+$0
+endsnippet
+
+snippet oc "octave block"
+\`\`\`octave
 $1
 \`\`\`
 $0
@@ -184,34 +178,7 @@ snippet eqbox "Begin equation box"
 $0
 endsnippet
 
-snippet box "Begin box"
-\begin{tcolorbox}
-	$1
-\end{tcolorbox}
-$0
-endsnippet
 
-# Templates
-snippet article "Article template"
-\documentclass[a4paper,10pt,norsk]{article}
-\usepackage[utf8]{inputenc}
-\usepackage[norsk]{babel}
-\usepackage{graphicx, verbatim, amsmath, amsfonts, geometry, float, import,
-tcolorbox}
-
-\setlength{\parindent}{0mm}
-\setlength{\parskip}{1.5mm}
-
-\title{$1}
-\author{Jens Junker Pedersen}
-
-\begin{document}
-\maketitle
-
-$2
-
-\end{document}
-endsnippet
 
 
 # Figure
@@ -221,16 +188,120 @@ $0
 endsnippet
 
 
+
+
+# ========================= Math =========================
+
+# ------------------------- General -------------------------
+snippet eqr "math ref" i
+\eqref{$1} $0
+endsnippet
+
+snippet sn "sietific notation" i
+\num{$1} $0
+endsnippet
+
+snippet ^ "Super script" i 
+^{$1}$0
+endsnippet
+
+snippet _ "Sub script" i 
+_{$1}$0 
+endsnippet
+
+snippet vec "Vector" i
+\vec{$1}$0
+endsnippet
+
+snippet bar "Bar" i
+\bar{$1}$0
+endsnippet
+
+snippet hat "Hat" i
+\hat{$1} $0
+endsnippet
+
+snippet til "Tilde" i
+\tilde{$1}$0
+endsnippet
+# ------------------------- Operators -------------------------
+
+snippet // "Fraction" iA
+\frac{$1}{$2}$0
+endsnippet
+
+snippet ro "Square root" i
+\sqrt{$1} $0
+endsnippet
+
+snippet sum "Sum" i
+\sum_{$1}^{$2}$0
+endsnippet
+
+snippet int "Integral" i
+\int_{$1}^{$2}$0
+endsnippet
+
+snippet im "Inline math" i
+\$$1\$$0
+endsnippet
+
+snippet br "Big round bracets" i 
+\left($1 \right)$0
+endsnippet
+
+snippet bs "Big square bracets" i
+\left[$1 \right]$0
+endsnippet
 #========================= Symbols =========================     
 #------------------------- Math -------------------------
+snippet deg "degree" i
+^\circ $0
+endsnippet
+
 snippet -> "rigth arrow" iA
-\rightarrow$0
+ \rightarrow $0
+endsnippet
+
+snippet <- "left arrow" iA
+ \leftarrow $0
 endsnippet
 
 snippet => "Rigth arrow" iA
-\Rightarrow$0
+ \Rightarrow $0
 endsnippet
 
+snippet <> "Left rigth arrow" iA
+ \Leftrightarrow $0
+endsnippet
+
+snippet dt "time derivative" i
+\frac{d$1}{dt}$0
+endsnippet
+
+snippet dpt "parital time derivative" i
+\frac{\partial $1}{\partial t} $0
+endsnippet
+
+snippet dp "partial derivative" i
+\frac{\partial $1}{\partial $2} $0
+endsnippet
+
+snippet dd "derivative" i
+\frac{d $1}{d $2} $0
+endsnippet
+
+snippet in "infinity" i
+\infty $0
+endsnippet
+
+snippet na "nabla" i
+\nabla
+endsnippet
+
+snippet pa "partial" i
+\partial $0
+endsnippet
 #------------------------- Greek -------------------------
 snippet al "alpha" i
 \alpha $0

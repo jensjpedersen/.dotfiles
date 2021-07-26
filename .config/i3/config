@@ -312,6 +312,8 @@ for_window [class="Blueman-manager"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Toggl Desktop"] floating enable
 for_window [class="matplotlib"] floating enable
+for_window [class="MATLAB R2021a - academic use"] floating enable
+
 for_window [class="scan"] floating enable
 
 
@@ -436,8 +438,10 @@ mode "$bluetooth" {
     bindsym y exec --no-startup-id bluetoothctl power on
     bindsym n exec --no-startup-id bluetoothctl power off
     bindsym s exec --no-startup-id $term --class "scan" -e bluetoothctl scan on
-    bindsym c exec --no-startup-id bluetoothctl connect 70:26:05:88:B4:0D
-    bindsym o exec --no-startup-id bluetoothctl connect 04:FE:A1:94:F3:8F
+    #bindsym c exec --no-startup-id bluetoothctl connect 70:26:05:88:B4:0D
+    bindsym c exec --no-startup-id ~/Scripts/Raspberry/xm2.sh
+    #bindsym o exec --no-startup-id bluetoothctl connect 04:FE:A1:94:F3:8F
+    bindsym o exec --no-startup-id ~/Scripts/Raspberry/onyx.sh
     bindsym d exec --no-startup-id bluetoothctl disconnect
     bindsym Escape mode "default"
     }
