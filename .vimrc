@@ -236,11 +236,11 @@ nmap <localleader>mw :set filetype=vimwiki<CR>
 nmap <localleader>qr :w<CR>:! qrencode -r % -o %:r.png<CR>
 
 " enable spell checker
-nnoremap <F1> :set nospell<CR>
-nnoremap <F2> :set spell spelllang=en,nb<CR>
+nnoremap <F10> :set nospell<CR>
+nnoremap <F11> :set spell spelllang=en,nb<CR>
 
 " source .vimrc
-nnoremap <F4> :source $MYVIMRC<CR>
+nnoremap <F12> :source $MYVIMRC<CR>
 
 " Emmet key
 "let g:user_emmet_leader_key='<C-F>'

@@ -119,6 +119,7 @@ set $term --no-startup-id alacritty
 bindsym $mod+Return exec $term -e zsh /home/jensjp/Scripts/terminal_output.sh
 # kill focused window
 bindsym $mod+q kill
+bindsym $mod+x kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id dmenu_run -nf "$light0" -nb "$dark0" -sb "$neutral_yellow" -sf "$dark0" -h 35 -fn 'MesloLGL Nerd Font Mono-14'
@@ -268,6 +269,11 @@ bindsym $mod+5 workspace number $ws15
 
 bindsym $mod+bar workspace number $ws17
 
+bindsym F1 workspace number $ws11
+bindsym F2 workspace number $ws12
+bindsym F3 workspace number $ws13
+bindsym F4 workspace number $ws14
+bindsym F5 workspace number $ws15
 
 # move focused container to workspace
 bindsym $mod+Shift+y move container to workspace number $ws1
@@ -536,9 +542,6 @@ bindsym $mod+z exec xinput --map-to-output "NTRG0001:01 1B96:1B05 Pen (0)" eDP1 
 
 
 # ====================== User key bindings =====================
-bindsym $mod+x exec xournalpp
-bindsym $mod+t exec TogglDesktop
-bindsym $mod+Shift+t exec killall TogglDesktop
 bindsym $mod+w exec brave
 
 ## Terminal applications 
