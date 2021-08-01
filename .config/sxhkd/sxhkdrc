@@ -17,6 +17,9 @@ super+shift+BackSpace
 	playerctl -i spotify,ncspot,vlc play-pause
 
 # ========================= Applications =========================
+super+w
+    brave
+
 super+{n,m,comma,period}
     alacritty --working-directory=$HOME -e {ranger,vim,calcurse,htop}
 

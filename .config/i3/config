@@ -534,26 +534,9 @@ bindsym $mod+0x2d mode "$settings"
 
 
 
-# Touch area on HDMI1 monitor
-bindsym $mod+less exec xinput --map-to-output "NTRG0001:01 1B96:1B05 Pen (0)" HDMI1 ; exec xinput --map-to-output "NTRG0001:01 1B96:1B05 Eraser (0)" HDMI1 #; exec xinput --map-to-output "15" HDMI1  
-
-# Touch area on eDP1 monitor
-bindsym $mod+z exec xinput --map-to-output "NTRG0001:01 1B96:1B05 Pen (0)" eDP1 ; exec xinput --map-to-output "NTRG0001:01 1B96:1B05 Eraser (0)" eDP1 ; exec xinput --map-to-output "15" eDP1
 
 
-# ====================== User key bindings =====================
-bindsym $mod+w exec brave
 
-## Terminal applications 
-##bindsym $mod+n     exec $term -e ~/.config/vifm/scripts/vifmrun
-#bindsym $mod+n     exec $term -e ranger
-#bindsym $mod+m     exec $term -e calcurse 
-##bindsym $mod+comma exec --no-startup-id "alacritty -e /bin/vim"
-#bindsym $mod+comma exec --no-startup-id alacritty --command vim
-#bindsym $mod+Shift+comma exec --no-startup-id alacritty --command vim -c VimwikiIndex
-#bindsym $mod+period exec $term -e htop
-#bindsym $mod+Shift+period exec $term -e bpytop
-#bindsym $mod+b exec $term -e "cointop"
 
 # ========================= Scratchpad =========================
 
@@ -565,6 +548,7 @@ bindsym $mod+w exec brave
 #for_window [instance="ranger"] resize grow down 100
 
 for_window [instance="ranger"] move window to scratchpad 
+for_window [instance="ranger"] resize set 1400 800
 exec $term --class ranger -e ranger
 bindsym $mod+Tab [instance="ranger"] scratchpad show
 
@@ -576,9 +560,9 @@ bindsym $mod+Tab [instance="ranger"] scratchpad show
 #for_window [instance="ncspot"] resize grow down 100
 
 for_window [instance="ncspot"] move window to scratchpad 
+for_window [instance="ncspot"] resize set 1400 800
 exec $term --class ncspot -e ncspot
 bindsym $mod+backslash [instance="ncspot"] scratchpad show
-
 # ------------------------- pulsemixer -------------------------
 #for_window [instance="pulsemixer"] floating enable
 #for_window [instance="pulsemixer"] resize grow left 350
@@ -587,77 +571,24 @@ bindsym $mod+backslash [instance="ncspot"] scratchpad show
 #for_window [instance="pulsemixer"] resize grow down 100
 
 for_window [instance="pulsemixer"] move window to scratchpad 
+for_window [instance="pulsemixer"] resize set 1400 800
 exec $term --class pulsemixer -e pulsemixer
 bindsym $mod+plus [instance="pulsemixer"] scratchpad show
 
 
 for_window [instance="terminal"] move window to scratchpad 
+for_window [instance="terminal"] resize set 1400 800
 exec $term --class terminal
 bindsym $mod+aring [instance="terminal"] scratchpad show
 
 for_window [instance="ptpython"] move window to scratchpad 
+for_window [instance="ptpython"] resize set 1400 800
 exec $term --class ptpython -e ptpython
 bindsym $mod+dead_diaeresis [instance="ptpython"] scratchpad show
-## ------------------------- fzf scripts -------------------------
-#bindsym $mod+ae exec --no-startup-id alacritty -e zsh ~/Scripts/Fzf/fzf_ranger.sh
-#bindsym $mod+aring exec --no-startup-id alacritty -e zsh ~/Scripts/Fzf/fzf_index.sh
-#
-#bindsym $mod+Shift+n     exec $term -e zsh ~/Scripts/Fzf/fzf_index.sh
-#bindsym $mod+Shift+m     exec $term -e zsh ~/Scripts/Fzf/fzf_zhistory.sh
-
-
-# ============================== Alacritty ============================== 
-#bindsym $mod+0x5c exec $term --working-directory $dir1 -e vim . 
-#bindsym $mod+plus exec $term -e ranger $dir1
-#bindsym $mod+Shift+0x5c exec $term --working-directory $dir1 -e tmux
-#
-#bindsym $mod+0xfe57 exec $term --working-directory $dir2 -e vim . 
-#bindsym $mod+0xe5 exec $term -e ranger $dir2
-#bindsym $mod+Shift+0xfe57 exec $term --working-directory $dir2 -e tmux
-#
-#bindsym $mod+0x27 exec $term --working-directory $dir3 -e vim .
-#bindsym $mod+0xe6 exec $term -e ranger $dir3
-#bindsym $mod+Shift+0x27 exec $term --working-directory $dir3 -e tmux
-
-# ============================== Termite ==============================  
-#bindsym $mod+0x5c exec $term -e "vim ." -d $dir1
-#bindsym $mod+plus exec $term -e ranger $dir1
-#bindsym $mod+Shift+0x5c exec $term -e tmux -d $dir1
-#
-#bindsym  $mod+0xfe57 exec $term -e "vim ." -d $dir2
-#bindsym  $mod+0xe5 exec $term -e ranger $dir2
-#bindsym  $mod+Shift+0xfe57 exec $term -e tmux -d $dir2
-#
-#bindsym  $mod+0x27 exec $term -e "vim ." -d $dir3
-#bindsym  $mod+0xe6 exec $term -e ranger $dir3
-#bindsym  $mod+Shift+0x27 exec $term -e tmux -d $dir3
-
 
 # ==================== Move workspaces ====================
-set $mode_move_workspaces [D]iagnostisk fysikk, [F]ysikk, [I]nformatikk, [G]eologi, [K]jerne, Fysikk
+set $mode_move_workspaces [F]ysikk, [I]nformatikk, [M]aster, [E]tc
 mode "$mode_move_workspaces" {
-     bindsym d exec --no-startup-id i3-msg rename workspace "1" to "d1";\
-               exec --no-startup-id i3-msg rename workspace "2" to "d2";\
-               exec --no-startup-id i3-msg rename workspace "3" to "d3";\
-               exec --no-startup-id i3-msg rename workspace "4" to "d4";\
-               exec --no-startup-id i3-msg rename workspace "5" to "d5";\
-               exec --no-startup-id i3-msg rename workspace "6" to "d6";\
-               exec --no-startup-id i3-msg rename workspace "7" to "d7";\
-               exec --no-startup-id i3-msg rename workspace "8" to "d8";\
-               exec --no-startup-id i3-msg rename workspace "9" to "d9";\
-               exec --no-startup-id i3-msg rename workspace "10" to "d10"
-
-     bindsym Shift+d exec --no-startup-id i3-msg rename workspace "d1" to "1";\
-                     exec --no-startup-id i3-msg rename workspace "d2" to "2";\
-                     exec --no-startup-id i3-msg rename workspace "d3" to "3";\
-                     exec --no-startup-id i3-msg rename workspace "d4" to "4";\
-                     exec --no-startup-id i3-msg rename workspace "d5" to "5";\
-                     exec --no-startup-id i3-msg rename workspace "d6" to "6";\
-                     exec --no-startup-id i3-msg rename workspace "d7" to "7";\
-                     exec --no-startup-id i3-msg rename workspace "d8" to "8";\
-                     exec --no-startup-id i3-msg rename workspace "d9" to "9";\
-                     exec --no-startup-id i3-msg rename workspace "d10" to "10"
-
      bindsym f exec --no-startup-id i3-msg rename workspace "1" to "f1";\
                exec --no-startup-id i3-msg rename workspace "2" to "f2";\
                exec --no-startup-id i3-msg rename workspace "3" to "f3";\
@@ -702,49 +633,49 @@ mode "$mode_move_workspaces" {
                      exec --no-startup-id i3-msg rename workspace "i9" to "9";\
                      exec --no-startup-id i3-msg rename workspace "i10" to "10"
 
-     bindsym g exec --no-startup-id i3-msg rename workspace "1" to "g1";\
-               exec --no-startup-id i3-msg rename workspace "2" to "g2";\
-               exec --no-startup-id i3-msg rename workspace "3" to "g3";\
-               exec --no-startup-id i3-msg rename workspace "4" to "g4";\
-               exec --no-startup-id i3-msg rename workspace "5" to "g5";\
-               exec --no-startup-id i3-msg rename workspace "6" to "g6";\
-               exec --no-startup-id i3-msg rename workspace "7" to "g7";\
-               exec --no-startup-id i3-msg rename workspace "8" to "g8";\
-               exec --no-startup-id i3-msg rename workspace "9" to "g9";\
-               exec --no-startup-id i3-msg rename workspace "10" to "g10"
+     bindsym m exec --no-startup-id i3-msg rename workspace "1" to "m1";\
+               exec --no-startup-id i3-msg rename workspace "2" to "m2";\
+               exec --no-startup-id i3-msg rename workspace "3" to "m3";\
+               exec --no-startup-id i3-msg rename workspace "4" to "m4";\
+               exec --no-startup-id i3-msg rename workspace "5" to "m5";\
+               exec --no-startup-id i3-msg rename workspace "6" to "m6";\
+               exec --no-startup-id i3-msg rename workspace "7" to "m7";\
+               exec --no-startup-id i3-msg rename workspace "8" to "m8";\
+               exec --no-startup-id i3-msg rename workspace "9" to "m9";\
+               exec --no-startup-id i3-msg rename workspace "10" to "m10"
 
-     bindsym Shift+g exec --no-startup-id i3-msg rename workspace "g1" to "1";\
-                     exec --no-startup-id i3-msg rename workspace "g2" to "2";\
-                     exec --no-startup-id i3-msg rename workspace "g3" to "3";\
-                     exec --no-startup-id i3-msg rename workspace "g4" to "4";\
-                     exec --no-startup-id i3-msg rename workspace "g5" to "5";\
-                     exec --no-startup-id i3-msg rename workspace "g6" to "6";\
-                     exec --no-startup-id i3-msg rename workspace "g7" to "7";\
-                     exec --no-startup-id i3-msg rename workspace "g8" to "8";\
-                     exec --no-startup-id i3-msg rename workspace "g9" to "9";\
-                     exec --no-startup-id i3-msg rename workspace "g10" to "10"
+     bindsym Shift+m exec --no-startup-id i3-msg rename workspace "m1" to "1";\
+                     exec --no-startup-id i3-msg rename workspace "m2" to "2";\
+                     exec --no-startup-id i3-msg rename workspace "m3" to "3";\
+                     exec --no-startup-id i3-msg rename workspace "m4" to "4";\
+                     exec --no-startup-id i3-msg rename workspace "m5" to "5";\
+                     exec --no-startup-id i3-msg rename workspace "m6" to "6";\
+                     exec --no-startup-id i3-msg rename workspace "m7" to "7";\
+                     exec --no-startup-id i3-msg rename workspace "m8" to "8";\
+                     exec --no-startup-id i3-msg rename workspace "m9" to "9";\
+                     exec --no-startup-id i3-msg rename workspace "m10" to "10"
 
-     bindsym k exec --no-startup-id i3-msg rename workspace "1" to "k1";\
-               exec --no-startup-id i3-msg rename workspace "2" to "k2";\
-               exec --no-startup-id i3-msg rename workspace "3" to "k3";\
-               exec --no-startup-id i3-msg rename workspace "4" to "k4";\
-               exec --no-startup-id i3-msg rename workspace "5" to "k5";\
-               exec --no-startup-id i3-msg rename workspace "6" to "k6";\
-               exec --no-startup-id i3-msg rename workspace "7" to "k7";\
-               exec --no-startup-id i3-msg rename workspace "8" to "k8";\
-               exec --no-startup-id i3-msg rename workspace "9" to "k9";\
-               exec --no-startup-id i3-msg rename workspace "10" to "k10"
+     bindsym e exec --no-startup-id i3-msg rename workspace "1" to "e1";\
+               exec --no-startup-id i3-msg rename workspace "2" to "e2";\
+               exec --no-startup-id i3-msg rename workspace "3" to "e3";\
+               exec --no-startup-id i3-msg rename workspace "4" to "e4";\
+               exec --no-startup-id i3-msg rename workspace "5" to "e5";\
+               exec --no-startup-id i3-msg rename workspace "6" to "e6";\
+               exec --no-startup-id i3-msg rename workspace "7" to "e7";\
+               exec --no-startup-id i3-msg rename workspace "8" to "e8";\
+               exec --no-startup-id i3-msg rename workspace "9" to "e9";\
+               exec --no-startup-id i3-msg rename workspace "10" to "e10"
 
-     bindsym Shift+k exec --no-startup-id i3-msg rename workspace "k1" to "1";\
-                     exec --no-startup-id i3-msg rename workspace "k2" to "2";\
-                     exec --no-startup-id i3-msg rename workspace "k3" to "3";\
-                     exec --no-startup-id i3-msg rename workspace "k4" to "4";\
-                     exec --no-startup-id i3-msg rename workspace "k5" to "5";\
-                     exec --no-startup-id i3-msg rename workspace "k6" to "6";\
-                     exec --no-startup-id i3-msg rename workspace "k7" to "7";\
-                     exec --no-startup-id i3-msg rename workspace "k8" to "8";\
-                     exec --no-startup-id i3-msg rename workspace "k9" to "9";\
-                     exec --no-startup-id i3-msg rename workspace "k10" to "10"
+     bindsym Shift+e exec --no-startup-id i3-msg rename workspace "e1" to "1";\
+                     exec --no-startup-id i3-msg rename workspace "e2" to "2";\
+                     exec --no-startup-id i3-msg rename workspace "e3" to "3";\
+                     exec --no-startup-id i3-msg rename workspace "e4" to "4";\
+                     exec --no-startup-id i3-msg rename workspace "e5" to "5";\
+                     exec --no-startup-id i3-msg rename workspace "e6" to "6";\
+                     exec --no-startup-id i3-msg rename workspace "e7" to "7";\
+                     exec --no-startup-id i3-msg rename workspace "e8" to "8";\
+                     exec --no-startup-id i3-msg rename workspace "e9" to "9";\
+                     exec --no-startup-id i3-msg rename workspace "e10" to "10"
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
