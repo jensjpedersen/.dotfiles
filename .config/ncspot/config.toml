@@ -1,4 +1,4 @@
 [keybindings]
-"1" = "focus queue"
-"2" = "focus search"
-"3" = "focus library"
+"F10" = "focus queue"
+"F11" = "focus search"
+"F12" = "focus library"
