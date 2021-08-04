@@ -29,9 +29,13 @@ Plug 'benmills/vimux' "vim tmux compatibility
 Plug 'justinmk/vim-sneak' "naviagation
 Plug 'wellle/targets.vim' " better text objects
 Plug 'mhinz/vim-startify' "start page
+Plug 'yinflying/matlab.vim'
+Plug 'adelarsq/vim-matchit'
+Plug 'BrandonRoehl/auto-omni'
 "Plug 'preservim/nerdtree' 
 "Plug 'dbeniamine/cheat.sh-vim' "cheat sheet
 "Plug 'blindFS/vim-taskwarrior' " task manegment
+
 call plug#end()
 
 set nocompatible
@@ -80,25 +84,55 @@ set timeoutlen=1000 ttimeoutlen=0 " Fix delay on escape
 
 let mapleader = " "
 let maplocalleader = "," 
-"" syntax higligthing for ocatave and matlab
 
 
 
-au BufRead,BufNewFile *.m set filetype=octave
+" ========================= matlab =========================
+source $VIMRUNTIME/macros/matchit.vim
+filetype indent on
+autocmd BufEnter *.m compiler mlint
+
+
+au BufRead,BufNewFile *.m set filetype=matlab
 
 " Use keywords from Octave syntax language file for autocomplete
 if has("autocmd") && exists("+omnifunc")
-   autocmd Filetype octave
+   autocmd Filetype matlab
    \ if &omnifunc == "" |
    \ setlocal omnifunc=syntaxcomplete#Complete |
    \ endif
 endif
 
+" ========================= Octave =========================
+" Octave
+"au BufRead,BufNewFile *.m set filetype=octave
+"
+"" Use keywords from Octave syntax language file for autocomplete
+"if has("autocmd") && exists("+omnifunc")
+"   autocmd Filetype octave
+"   \ if &omnifunc == "" |
+"   \ setlocal omnifunc=syntaxcomplete#Complete |
+"   \ endif
+"endif
+
+
+" ========================= Latex =========================
 " Latex specific settings
 autocmd BufNewFile,BufRead *.tex 
    \ set textwidth=79 |
    \ setlocal spell spelllang=en,nb
 
+
+
+" Latex settings
+let g:tex_flavor='latex'
+"let g:vimtex_view_method='zathura'
+let g:vimtex_view_method='mupdf'
+let g:vimtex_quickfix_mode=0
+"let conceallevel=1
+"let g:tex_conceal='abdmg'
+
+" ========================= Markdown =========================
 autocmd BufNewFile,BufRead *.md
    \ set textwidth=79 |
 
@@ -107,28 +141,22 @@ autocmd BufNewFile,BufRead *.tsv
     \ set softtabstop=20 | 
     \ set tabstop=20 
 
-"" Enable pandoc syntax in vimwiki
-"augroup pandoc_syntax
-"  autocmd! FileType vimwiki set syntax=markdown.pandoc
-"augroup END
 
+" ========================= Calcurse =========================
 " Load markdown in calcurse
 autocmd BufRead,BufNewFile /tmp/calcurse* set filetype=markdown
 autocmd BufRead,BufNewFile ~/.calcurse/notes/* set filetype=markdown
 
-" ========================= padoc-syntax settings =========================
-"let g:pandoc#syntax#conceal#use=1
-"let g:pandoc#syntax#conceal#urls = 1
 
-" ========================= vimwiki settings =========================
+" ========================= Vimwiki =========================
 " Get ultisnips to work with vimwiki
 let g:vimwiki_table_mappings = 0
 " markdown as dfault syntax
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
 
-"nnoremap gtn <Plug>VimwikiNextTask "standard gnt - fucks with gn commands
 
+" ========================= YouCompleteMe =========================
 " ycm settings
 set completeopt-=preview                " Hides preview window
 let g:ycm_add_pewview_to_completeopt = 1
@@ -152,27 +180,23 @@ let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 "let g:SuperTabDefaultCompletionType = '<C-n>'
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
-
 " enable ycm for latex
 if !exists('g:ycm_semantic_triggers')
   let g:ycm_semantic_triggers = {}
 endif
 au VimEnter * let g:ycm_semantic_triggers.tex=g:vimtex#re#youcompleteme
 
-
-" Latex settings
-let g:tex_flavor='latex'
-"let g:vimtex_view_method='zathura'
-let g:vimtex_view_method='mupdf'
-let g:vimtex_quickfix_mode=0
-"let conceallevel=1
-"let g:tex_conceal='abdmg'
+" ========================= Ultisnips =========================
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 
+
+
+
+" ========================= Startify =========================
 " Vim startify
 let g:startify_bookmarks = [ {'c': '~/.vimrc'}, {'w': '~/vimwiki/index.md'}
             \, {'p': '/home/jensjp/vimwiki/Plan/index.md' }
@@ -186,12 +210,12 @@ let g:startify_lists = [
           \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
           \ { 'type': 'commands',  'header': ['   Commands']       },
           \ ]
-let g:startify_files_number = 5 
+let g:startify_files_number = 10 
 let g:startify_change_to_dir = 0 " autochdir is enabled, not needed
 let g:startify_custom_header = 'startify#pad(startify#fortune#cowsay())'
 
 
-
+" ========================= Etc =========================
 " Sneak settings
 let g:sneak#use_ic_scs = 1 " case insensitive
 
@@ -279,20 +303,12 @@ nnoremap <C-x> :cp<CR>
 " vimgrep
 nnoremap <leader>/ :vimgrep /<c-r>//g ./*<CR>
 
-
-" vimwiki bindings
-"nunmap <Space>wt 
-nnoremap <Leader>wt :VimwikiTable 
-"nnoremap <leader>b '' 
-
 " Undo tree
 nnoremap <silent> <leader>u  :UndotreeToggle<CR>
 
 " NERD Tree
 nnoremap <silent> <leader>a :NERDTreeToggle<CR>
 
-" TaskWarrior
-nnoremap <silent> <leader>q :TW<CR>
 
 " Tagbar
 nnoremap <leader>t  :TagbarToggle<CR>
@@ -303,8 +319,8 @@ let g:tagbar_width = 50
 nmap ø <Plug>Sneak_s
 nmap Ø <Plug>Sneak_S
 " visual-mode
-"xmap ø <Plug>Sneak_s
-"xmap Ø <Plug>Sneak_S
+xmap ø <Plug>Sneak_s
+xmap Ø <Plug>Sneak_S
 " operator-pending-mode
 omap ø <Plug>Sneak_s
 omap Ø <Plug>Sneak_S
