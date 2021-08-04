@@ -1,18 +1,9 @@
-"       _                    
-"__   _(_)_ __ ___  _ __ ___ 
-"\ \ / / | '_ ` _ \| '__/ __|
-" \ V /| | | | | | | | | (__ 
-"(_)_/ |_|_| |_| |_|_|  \___|
-"
-"map pacman ctags - required for tagslist
-"aur yc 
-" auto install vim-plug
-"if empty(glob('~/.vim/autoload/plug.vim'))
-"  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-"    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-"  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-"endif
-" error: line 7 - missing endif
+"             _                    
+"      __   _(_)_ __ ___  _ __ ___ 
+"      \ \ / / | '_ ` _ \| '__/ __|
+"       \ V /| | | | | | | | | (__ 
+"      (_)_/ |_|_| |_| |_|_|  \___|
+"      
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox' 
 "Plug 'itchyny/lightline.vim'	 " Lightline
@@ -20,13 +11,13 @@ Plug 'morhetz/gruvbox'
 ""Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }	" super search
 Plug 'junegunn/fzf.vim'					" super search
-"Plug 'mbbill/undotree'
+Plug 'mbbill/undotree'
 ""Plug 'vifm/vifm.vim'
 Plug 'lervag/vimtex'		 " Latex
 Plug 'vimwiki/vimwiki'		 " vimwiki
 "Plug 'vim-pandoc/vim-pandoc-syntax' " pandoc syntax
 "Plug 'ervandew/supertab'    " supertab (make YCM compatible with UltiSnips)
-"Plug 'preservim/tagbar' 
+Plug 'preservim/tagbar' 
 ""Plug 'francoiscabrol/ranger.vim'
 "" Track the engine.
 Plug 'SirVer/ultisnips'
@@ -35,11 +26,11 @@ Plug 'tpope/vim-fugitive' " git plugin
 Plug 'airblade/vim-gitgutter' 
 Plug 'christoomey/vim-tmux-navigator' "Navigation between vim and tmux
 Plug 'benmills/vimux' "vim tmux compatibility
-"Plug 'justinmk/vim-sneak' "naviagation
-"Plug 'wellle/targets.vim' " better text objects
+Plug 'justinmk/vim-sneak' "naviagation
+Plug 'wellle/targets.vim' " better text objects
 Plug 'mhinz/vim-startify' "start page
 "Plug 'preservim/nerdtree' 
-"Plug 'dbeniamine/cheat.sh-vim' "cheat sheet"
+"Plug 'dbeniamine/cheat.sh-vim' "cheat sheet
 "Plug 'blindFS/vim-taskwarrior' " task manegment
 call plug#end()
 
@@ -181,6 +172,7 @@ let g:vimtex_quickfix_mode=0
 "let conceallevel=1
 "let g:tex_conceal='abdmg'
 
+
 " Vim startify
 let g:startify_bookmarks = [ {'c': '~/.vimrc'}, {'w': '~/vimwiki/index.md'}
             \, {'p': '/home/jensjp/vimwiki/Plan/index.md' }
@@ -229,17 +221,19 @@ nnoremap <leader>e :e % <CR>
 nmap <localleader>mm :w<CR>:! pandoc % -t latex -o %:r.pdf <CR>
 nmap <localleader>ms :w<CR>:! pandoc % -t beamer -o %:r.pdf <CR> " Make slide show
 nmap <localleader>mv :w<CR>: RunSilent mupdf %:r.pdf & <CR> 
-nmap <localleader>mp :set filetype=pandoc<CR> 
-nmap <localleader>mw :set filetype=vimwiki<CR> 
+nmap <localleader>md :w<CR>: RunSilent rm %:r.pdf <CR> 
+"nmap <localleader>mp :set filetype=pandoc<CR> 
+"nmap <localleader>mw :set filetype=vimwiki<CR> 
 
 " QR-code
-nmap <localleader>qr :w<CR>:! qrencode -r % -o %:r.png<CR>
+nmap <localleader>mq :w<CR>:! qrencode -r % -o %:r.png<CR>
 
 " enable spell checker
 nnoremap <F10> :set nospell<CR>
 nnoremap <F11> :set spell spelllang=en,nb<CR>
 
 " source .vimrc
+nnoremap <F12> <Nop>
 nnoremap <F12> :source $MYVIMRC<CR>
 
 " Emmet key
@@ -280,6 +274,7 @@ nnoremap <localleader>f :GFiles<CR>
 nnoremap <leader>c :copen<CR>
 nnoremap <C-c> :cn<CR>
 nnoremap <C-x> :cp<CR>
+
 
 " vimgrep
 nnoremap <leader>/ :vimgrep /<c-r>//g ./*<CR>
