@@ -29,3 +29,5 @@ endif
 
 
 
+"syn match texMathDelim /\\begin{equation}/ conceal cchar=ﬦ
+"syn match texMathDelim /\\end{equation}/ conceal cchar=ﬦ

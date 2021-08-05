@@ -30,14 +30,16 @@ Plug 'justinmk/vim-sneak' "naviagation
 Plug 'wellle/targets.vim' " better text objects
 Plug 'mhinz/vim-startify' "start page
 Plug 'yinflying/matlab.vim'
-Plug 'adelarsq/vim-matchit'
-Plug 'BrandonRoehl/auto-omni'
+"Plug 'adelarsq/vim-matchit'
+"Plug 'BrandonRoehl/auto-omni'
 "Plug 'preservim/nerdtree' 
 "Plug 'dbeniamine/cheat.sh-vim' "cheat sheet
 "Plug 'blindFS/vim-taskwarrior' " task manegment
-
 call plug#end()
 
+"==================================================
+" Standard stuff
+"==================================================
 set nocompatible
 filetype plugin on
 syntax on
@@ -59,7 +61,7 @@ set incsearch          " incremental search
 set ignorecase 
 set smartcase           " case sensitive if upper keys 
 set relativenumber
-set scrolloff=8
+"set scrolloff=8
 set autochdir
 
 
@@ -215,7 +217,7 @@ let g:startify_change_to_dir = 0 " autochdir is enabled, not needed
 let g:startify_custom_header = 'startify#pad(startify#fortune#cowsay())'
 
 
-" ========================= Etc =========================
+"========================= Etc =========================
 " Sneak settings
 let g:sneak#use_ic_scs = 1 " case insensitive
 
@@ -224,7 +226,10 @@ let g:gitgutter_map_keys = 0
 
 
 
-" ==================== Keybindings ================================
+"==================================================
+" Keybindings
+"==================================================
+"
 " Ranger file explorer 
 command! -nargs=* RunSilent
       \ | execute ':silent !'.'<args>'
@@ -233,13 +238,12 @@ command! -nargs=* RunSilent
 nnoremap Q !!$SHELL<CR>
 nnoremap <bar> !!genius <CR>
 nnoremap <leader>f :RunSilent ranger<CR>
-nnoremap <localleader>t :RunSilent tig<CR>
 
 nnoremap <leader>s :!curl cht.sh/bash/
 
-nnoremap <leader>e :e % <CR>
+nnoremap <leader>e :e % <CR> " reload file
 
-" Markdown
+"========================= Markdown =========================
 "nmap <localleader>mm :w<CR>: RunSilent pandoc % -t latex -o %:r.pdf <CR>
 "nmap <localleader>ms :w<CR>: RunSilent pandoc % -t beamer -o %:r.pdf <CR> " Make slide show
 nmap <localleader>mm :w<CR>:! pandoc % -t latex -o %:r.pdf <CR>
@@ -265,7 +269,29 @@ nnoremap <F12> :source $MYVIMRC<CR>
 
 "Exit search
 nnoremap <silent> <esc><esc> :noh<return><esc>
-"
+
+"========================= better mappings =========================
+" consitenscy
+nnoremap Y y$
+
+" keeping it centered
+nnoremap n nzz
+nnoremap N Nzz
+nnoremap J mxJ`x
+
+" set undo breakpoints for , and . 
+inoremap , ,<C-g>u
+inoremap . .<C-g>u
+
+" set jumplist mark if momvent bigger than 5 (coutn) lines
+nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
+nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
+
+" move text
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
+
+"========================= Github mappings =========================
 " Git fugitive mappings
 nnoremap <localleader>g :Git<CR>
 nnoremap <localleader>s :Git status<CR>
@@ -276,6 +302,9 @@ nnoremap <localleader>u :Git add -u<CR>
 nnoremap <localleader>h :Git log<CR>
 nnoremap <localleader>d :Gdiffsplit<CR>
 nnoremap <localleader>r :G reflog<CR>  
+
+" github terminal interface
+nnoremap <localleader>t :RunSilent tig<CR>
 
 
 " fzf mappings
