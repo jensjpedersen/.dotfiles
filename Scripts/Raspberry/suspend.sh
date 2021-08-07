@@ -3,5 +3,5 @@ xrandr --output LVDS-1 --primary --mode 1920x1080 --pos 0x0 --rotate normal --ou
 #xrandr --output LVDS-1 
 redshift -P -O 3000 -b 1
 #sleep 5
-sleep 1
+sleep 5
 systemctl suspend
