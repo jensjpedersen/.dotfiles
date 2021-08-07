@@ -221,7 +221,7 @@ source ~/powerlevel10k/powerlevel10k.zsh-theme
 # ========================= Aliases =========================
 # ranger
 alias r="ranger"
-alias v="vim"
+alias v="nvim"
 # set alias for git and dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 #alias vim="nvim"
