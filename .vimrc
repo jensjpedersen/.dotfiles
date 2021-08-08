@@ -238,6 +238,8 @@ command! -nargs=* RunSilent
 nnoremap Q !!$SHELL<CR>
 nnoremap <bar> !!genius <CR>
 nnoremap <leader>f :RunSilent ranger<CR>
+nnoremap <leader>x :RunSilent ./%<CR>
+
 
 nnoremap <leader>s :!curl cht.sh/bash/
 
@@ -381,9 +383,10 @@ nnoremap <C-l> <C-w>l
 
 
 "tnoremap <C-space><esc> <C-\><C-n>
-tnoremap <esc> <C-\><C-n>
+tnoremap <C-space>n <C-\><C-n>
 
-tnoremap <C-space>k <up>
+tnoremap <C-p>k <up>
+tnoremap <C-n>k <down>
 
 " Auto closing bracets
 inoremap ( ()<Esc>:let leavechar=")"<CR>i
