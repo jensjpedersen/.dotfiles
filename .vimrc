@@ -245,6 +245,13 @@ nnoremap <leader>s :!curl cht.sh/bash/
 
 nnoremap <leader>e :e % <CR>:redraw!<CR> " reload file
 
+"========================= Splits =========================
+" Vertical splits
+nnoremap <C-W>5 :vertical resize 80<CR>
+nnoremap <C-W>6 :vertical resize 90<CR>
+nnoremap <C-W>7 :vertical resize 100<CR>
+nnoremap <C-W>8 :vertical resize 110<CR>
+nnoremap <C-W>9 :vertical resize 120<CR>
 "========================= Markdown =========================
 "nmap <localleader>mm :w<CR>: RunSilent pandoc % -t latex -o %:r.pdf <CR>
 "nmap <localleader>ms :w<CR>: RunSilent pandoc % -t beamer -o %:r.pdf <CR> " Make slide show
@@ -279,6 +286,8 @@ nnoremap Y y$
 " keeping it centered
 nnoremap n nzz
 nnoremap N Nzz
+nnoremap <C-I> <C-I>zz
+nnoremap <C-O> <C-O>zz
 nnoremap J mxJ`x
 
 " set undo breakpoints for , and . 
@@ -363,10 +372,10 @@ omap Ø <Plug>Sneak_S
 
 
 "split navigations
-tnoremap <C-h> <C-\><C-N><C-w>h
-tnoremap <C-j> <C-\><C-N><C-w>j
-tnoremap <C-k> <C-\><C-N><C-w>k
-tnoremap <C-l> <C-\><C-N><C-w>l
+tnoremap <C-w>h <C-\><C-N><C-w>h
+tnoremap <C-w>j <C-\><C-N><C-w>j
+tnoremap <C-w>k <C-\><C-N><C-w>k
+tnoremap <C-w>l <C-\><C-N><C-w>l
 inoremap <C-h> <C-\><C-N><C-w>h
 inoremap <C-j> <C-\><C-N><C-w>j
 inoremap <C-k> <C-\><C-N><C-w>k
