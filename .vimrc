@@ -7,7 +7,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'morhetz/gruvbox' 
 "Plug 'itchyny/lightline.vim'	 " Lightline
-""Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline'
 ""Plug 'vim-airline/vim-airline-themes'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }	" super search
 Plug 'junegunn/fzf.vim'					" super search
@@ -15,6 +15,7 @@ Plug 'mbbill/undotree'
 ""Plug 'vifm/vifm.vim'
 Plug 'lervag/vimtex'		 " Latex
 Plug 'vimwiki/vimwiki'		 " vimwiki
+Plug 'dhruvasagar/vim-table-mode' 
 "Plug 'vim-pandoc/vim-pandoc-syntax' " pandoc syntax
 "Plug 'ervandew/supertab'    " supertab (make YCM compatible with UltiSnips)
 Plug 'preservim/tagbar' 
@@ -28,7 +29,9 @@ Plug 'christoomey/vim-tmux-navigator' "Navigation between vim and tmux
 Plug 'benmills/vimux' "vim tmux compatibility
 Plug 'justinmk/vim-sneak' "naviagation
 Plug 'wellle/targets.vim' " better text objects
+Plug 'tpope/vim-surround' 
 Plug 'mhinz/vim-startify' "start page
+" Matlab
 Plug 'yinflying/matlab.vim'
 "Plug 'adelarsq/vim-matchit'
 Plug 'BrandonRoehl/auto-omni'
@@ -152,11 +155,21 @@ autocmd BufRead,BufNewFile ~/.calcurse/notes/* set filetype=markdown
 
 " ========================= Vimwiki =========================
 " Get ultisnips to work with vimwiki
-let g:vimwiki_table_mappings = 0
+"let g:vimwiki_table_mappings = 0
+"
+" disable in order to work with vim table mode
+let g:vimwiki_table_mappings=0
+let g:vimwiki_table_auto_fmt=0
+
 " markdown as dfault syntax
 let g:vimwiki_list = [{'path': '~/vimwiki/',
                       \ 'syntax': 'markdown', 'ext': '.md'}]
+"inoremap <C-l> <Plug>vimwiki_i_<Tab>_table<CR>
 
+" ========================= Table mode =========================
+let g:table_mode_always_active = 1
+let g:table_mode_map_prefix = '<Leader>o'
+"let g:table_mode_disable_mappings = 1
 
 " ========================= YouCompleteMe =========================
 " ycm settings
@@ -224,6 +237,11 @@ let g:sneak#use_ic_scs = 1 " case insensitive
 " Gitgutter settings
 let g:gitgutter_map_keys = 0
 
+" undotree
+"let g:undotree_WindowLayout = 2
+
+let g:undotree_CustomUndotreeCmd  = 'topleft vertical 50 new'
+let g:undotree_CustomDiffpanelCmd = 'botright 10 new'
 
 
 "==================================================
@@ -237,6 +255,13 @@ command! -nargs=* RunSilent
 
 nnoremap Q !!$SHELL<CR>
 nnoremap <bar> !!genius <CR>
+vnoremap <bar> <Esc> :'<,'>y <CR>:'<norm O-----<CR> :'<norm kP <CR> :'<,'>!genius <CR>
+
+
+":'< norm O <CR> :
+":'<,'>!python <CR>
+
+
 nnoremap <leader>f :RunSilent ranger<CR>
 nnoremap <leader>x :RunSilent ./%<CR>
 
@@ -376,10 +401,10 @@ tnoremap <C-w>h <C-\><C-N><C-w>h
 tnoremap <C-w>j <C-\><C-N><C-w>j
 tnoremap <C-w>k <C-\><C-N><C-w>k
 tnoremap <C-w>l <C-\><C-N><C-w>l
-inoremap <C-h> <C-\><C-N><C-w>h
-inoremap <C-j> <C-\><C-N><C-w>j
-inoremap <C-k> <C-\><C-N><C-w>k
-inoremap <C-l> <C-\><C-N><C-w>l
+inoremap <C-w> <C-\><C-N><C-w>h
+inoremap <C-w> <C-\><C-N><C-w>j
+inoremap <C-w> <C-\><C-N><C-w>k
+inoremap <C-w> <C-\><C-N><C-w>l
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
