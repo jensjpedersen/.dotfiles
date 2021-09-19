@@ -1,0 +1,13 @@
+
+{
+    "coc.source.omni.enable":true, 
+    "coc.source.omni.filetypes":["matlab"], 
+
+    
+    "languageserver": {
+        "digestif": {
+            "command": "digestif",
+            "filetypes": ["tex", "plaintex", "context"]
+        }
+    }
+}
